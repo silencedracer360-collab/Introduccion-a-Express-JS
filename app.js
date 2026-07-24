@@ -1,4 +1,4 @@
-const express = require('express');
+import express from "express";
 const app = express();
 const port = 3000;
 
@@ -9,3 +9,4 @@ res.send(`Aprendicez ficha 3407186`);
 app.listen(port, () => {
 console.log( `Servidor en funcionamiento en el puerto: ${port}`);
 });
+

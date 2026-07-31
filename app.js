@@ -7,6 +7,6 @@ res.send(`Aprendicez ficha 3407186`);
 });
 
 app.listen(port, () => {
-console.log( `Servidor en funcionamiento en el puerto: ${port}`);
+console.log( `Servidor en funcionamiento en el puerto: http://localhost:${port}`);
 });
 

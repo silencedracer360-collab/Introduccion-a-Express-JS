@@ -5,3 +5,10 @@ Para instalar dependencia o librerias
 npm install nombre_dependencia
 npm install -> si tienes el archivo package.json con el diccionario de dependenicas escrito
 
+
+
+
+GIT
+
+Crear rama: git branch nombre_rama
+Crear rama y ubicarse: git checkout -b nombre_rama

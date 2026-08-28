@@ -1,0 +1,104 @@
+COMANDOS BASICOS DE GIT 
+
+1. PARA EMPEZAR UN PROYECTO
+
+* git init
+Crea un repositorio local nuevo en la carpeta actual.
+* git clone 
+Descarga un repositorio existente desde la nube (como GitHub).
+
+2. PARA GUARDAR TUS CAMBIOS
+
+* git status
+Muestra el estado de tus archivos (modificados, listos o sin seguimiento).
+* git add 
+Prepara un archivo especifico para guardarlo.
+* git add .
+Prepara TODOS los archivos modificados de golpe.
+* git commit -m "tu mensaje"
+Guarda de forma definitiva los archivos preparados con un mensaje explicativo.
+
+3. PARA SINCRONIZAR CON LA NUBE
+
+* git push origin 
+Sube tus commits locales al servidor remoto (como GitHub).
+* git pull
+Descarga y fusiona los ultimos cambios de la nube a tu computadora.
+
+4. PARA TRABAJAR CON RAMAS (BRANCHES)
+
+* git branch
+Lista todas las ramas de tu proyecto.
+* git checkout -b 
+Crea una rama nueva y se cambia a ella inmediatamente.
+* git checkout 
+Se cambia a una rama que ya existe.
+
+* git log o git log --online
+Para ver los commits de la rama en que estas
+
+5. PARA VINCULAR EL REPO REMOTO CON EL LOCAL
+
+* git remote -v 
+Lista los repos remotos vinculados con el local
+
+* git remote add <nombre abrebiado de la conexión del repo> <url>
+Creas un nuevo remoto
+
+
+EXPRESS
+
+**req y res son los dos objetos fundamentales que Express pasa a las funciones de manejo de rutas para gestionar la comunicación entre el cliente (como un navegador) y el servidor.
+
+#req (abreviatura de request o solicitud) contiene toda la información sobre la petición que hace el cliente.
+
+#res (abreviatura de response o respuesta) sirve para controlar y enviar la contestación de vuelta al cliente.
+
+
+El objeto req (Request)
+
+Representa la petición HTTP. Con este objeto puedes saber qué está pidiendo el usuario.
+
+--> req.params: Lee los parámetros en la ruta de la URL (por ejemplo, /user/:id).
+
+--> req.query: Lee los parámetros de búsqueda o consulta después del signo ? en la URL (por ejemplo, ?name=ana).
+
+El objeto res (Response)
+Representa la respuesta que el servidor le regresa al cliente.
+
+--> res.send(): Envía una respuesta de texto o HTML.
+--> res.json(): Envía datos estructurados en formato JSON, ideal para APIs.
+--> res.status(): Permite fijar el código de estado HTTP (por ejemplo, 404 para no encontrado o 200 para éxito).
+
+COMMONJS VS ES-MODULES (ESM) 
+
+Ambos son sistemas de modulos de JavaScript que permiten organizar, dividir y compartir codigo entre diferentes archivos. 
+
+1. COMMONJS (CJS)
+Es el sistema tradicional y por defecto de Node.js.
+
+* Sintaxis: Usa 'require()' para importar y 'module.exports' para exportar.
+* Carga: Es SINCRONICO (bloquea la ejecucion hasta que el modulo se carga).
+* Momento: Se evalua en tiempo de ejecucion (puedes usar require() dentro de un if).
+* Variables: Incluye variables nativas como '__dirname' y '__filename'.
+
+Ejemplo de Codigo:
+// Exportar (archivo.js) -> module.exports = { saludo: "Hola" };
+// Importar (app.js)    -> const { saludo } = require('./archivo.js'); 
+
+1. ES MODULES (ESM)
+Es el estandar oficial y moderno de JavaScript (ECMAScript) para navegadores y Node.js.
+
+* Sintaxis: Usa 'import' para importar y 'export' para exportar.
+* Carga: Es ASINCRONICO (permite que el resto del codigo siga corriendo).
+* Momento: Se analiza en tiempo de compilacion (los import van siempre arriba).
+* Variables: NO existen '__dirname' ni '__filename' de forma nativa.
+
+Ejemplo de Codigo:
+// Exportar (archivo.js) -> export const saludo = "Hola";
+// Importar (app.js)    -> import { saludo } from './archivo.js'; 
+
+1. ¿COMO SE ACTIVAN EN NODE.JS?
+
+* CommonJS: Viene activo por defecto en cualquier archivo .js.
+* ES Modules: Debes agregar '"type": "module"' en tu package.json, o cambiar la extension de tus archivos a .mjs.

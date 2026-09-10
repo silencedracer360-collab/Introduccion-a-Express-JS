@@ -48,22 +48,24 @@ app.delete("/api/aprendices/:id", (req, res) => {
 });
 
 
-app.post("/rutaJSON", (req, res) => {
-    const todosDatos = req.body
-    const edad = req.body.edad2
-    if(edad >= 18){
-        res.json({datosJson: "Es mayor de edad"});
-    }else{
-        res.json({mensaje: ""});
+app.post("/rutaJson", (req, res)=>{
+    const todosDatos =req.body
+    const edad =req.body.Edad
+    if (edad >= 18) {
+        res.json({"mensaje":"Es mayor de edad"})
+    }else {
+        res.json({"mensaje":"Es menor"})
     }
-
+    res.json({datosJson: todosDatos});
 });
 
-app.post("/rutaFormulario", (req, res) => {
-    const todosDatos = req.body
+app.post("/rutaFormularios", (req, res)=>{
+    const todosDatos =req.body
     const programa = req.body.programa
-    res.json({TodosDatos: todosDatos, miPrograma: programa});
+    
+    res.json({Todosdatos: todosDatos, Mi_Programa: programa})
 });
+
 
 
 

@@ -7,19 +7,47 @@ const port = process.env.PUERTO || 3000;
 app.use(express.json()) //--> en formato de JSON
 app.use(express.urlencoded({extended: true})) //--> en formato de Formulario
 
+//Leer archivo
+const sistemaArchivo = require("fs");
+const ruta = require("path");
+
+const rutaArchivo = ruta.join(__dirname, "datos.json");
+
+//Libreria para subir archivos
+const multer = require("multer");
+
+//Configurar almacenamiento archivos
+
+const almacenamiento = multer.diskStorage({
+    destination:(req, file, cb)=>{
+        cb(null, "misImagenes/");
+    },
+    filename:(req, file, cb)=>{
+        const extension = ruta.extname(file.originalname);
+        cb(null, `${Date.now()}${extension}`);
+    }
+});
+
+const cargar = multer({storage: almacenamiento})
+
 app.get("/", (req, res) => {
     res.send(`API REST APRENDICES`);
 });
 
-//Lista aprendices
+//Endpoint para listar aprendices
 app.get("/api/aprendices", (req, res) => {
-    //res.status(200).json es para verificar que el mensjae esta OK
-    res.status(200).json({
-        "mensaje": "Lista de Aprendices"
+    //Leer archivo JSON
+    sistemaArchivo.readFile(rutaArchivo, "utf-8", (error, datos)=>{
+        if(error){
+            return res.status(500).json({Error: "No se puede leer rutaArchivo, o BD"})
+        }
+        const listaAprendices = JSON.parse(datos);
+        res.status(200).json({"mensaje": listaAprendices});
     });
+
 });
 
-//Listar un aprendiz
+//Endpoint para listar un aprendiz
 app.get("/api/aprendices/:id", (req, res) => {
     //res.status(200).json es para verificar que el mensjae esta OK
     res.status(200).json({
@@ -27,11 +55,33 @@ app.get("/api/aprendices/:id", (req, res) => {
     });
 });
 
-//Endpoint crear aprendices
-app.post("/api/aprendices", (req, res) => {
-    res.status(201).json({
-        "mensaje": "Crear aprendiz"
+//endpoint para crear aprendices
+
+app.post('/api/aprendices',cargar.single("imagen"),(req, res) =>{
+    
+    const datosAprendiz = req.body 
+
+    //AGREGAR LA RUTA DE LA IMAGEN
+    datosAprendiz.imagen = req.file? `/misImagenes/${req.file.filename}` : "sin imagen"
+    
+    //leer archivo json
+    sistemaArchivo.readFile(rutaArchivo, "utf-8", (error, datos)=>{
+        if (error){
+            return res.status(500).json({Error: "No se puede leer rutaArchivo, o BD"});
+        }
+        const listaAprendices = JSON.parse(datos);
+        
+        //adicionar el nuevo aprendiz a la lista
+        listaAprendices.push(datosAprendiz)
+        sistemaArchivo.writeFile(rutaArchivo,JSON.stringify(listaAprendices, null, 2), (error)=>{
+            if (error){
+            return res.status(500).json({Error: "No se puede escribir en el archivo, o BD"});
+            }
+            res.status(200).json ({"mensaje":"Aprendiz creado", "Datos Aprendiz": datosAprendiz});
+        });
+        
     });
+    
 });
 
 //Endpoint para editar aprendices

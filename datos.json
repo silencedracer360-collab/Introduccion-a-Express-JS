@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "nombre": "Esteban",
+    "correo": "esteban@gmail.com",
+    "clave": "123456",
+    "imagen": "sin imagen"
+  },
+  {
+    "id": "1",
+    "nombre": "Esteban",
+    "correo": "esteban@gmail.com",
+    "clave": "123456",
+    "imagen": "sin imagen"
+  },
+  {
+    "id": "1",
+    "nombre": "Esteban",
+    "correo": "esteban@gmail.com",
+    "clave": "123456",
+    "imagen": "sin imagen"
+  },
+  {
+    "id": "1",
+    "nombre": "Esteban",
+    "correo": "esteban@gmail.com",
+    "clave": "123456789",
+    "imagen": "/misImagenes/1789089599941.jpeg"
+  }
+]

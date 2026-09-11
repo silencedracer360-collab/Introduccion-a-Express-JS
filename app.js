@@ -3,7 +3,7 @@ const app = express();
 require('dotenv').config() //Forma de exportar antigua CommonJS
 const port = process.env.PUERTO || 3000;
 const registro = require('./middleware/registroMiddleware')
-
+const mensajeError = require('./middleware/manejadorErrores')
 //middleware para parsear datos del body
 app.use(express.json()) //--> en formato de JSON
 app.use(express.urlencoded({extended: true})) //--> en formato de Formulario
@@ -18,6 +18,7 @@ app.use((req, res, next)=>{
 
 //Historial de acciones con los method
 app.use(registro)
+
 
 
 //Leer archivo
@@ -112,6 +113,19 @@ app.delete("/api/aprendices/:id", (req, res) => {
     });
 });
 
+//Error provocado
+app.get("/error", (req, res, next)=>{
+    next(new Error("Error intencional de mi app"))
+});
+
+
+//Ruta protegida
+app.get("/api/rutaprotegida", (req, res)=>{
+    res.status(200).json({mensaje:"Esta es mi ruta protegida !!!"})
+})
+
+//Mensaje de error
+app.use(mensajeError)
 
 app.listen(port, () => {
     console.log( `Servidor en funcionamiento en el puerto: http://localhost:${port}`);

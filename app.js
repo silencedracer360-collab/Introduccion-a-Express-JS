@@ -2,8 +2,12 @@ const express = require('express');
 const app = express();
 require('dotenv').config() //Forma de exportar antigua CommonJS
 const port = process.env.PUERTO || 3000;
+const jwt = require('jsonwebtoken')
+
+//importacion de middlewares propios
 const registro = require('./middleware/registroMiddleware')
 const mensajeError = require('./middleware/manejadorErrores')
+const autenticacion = require('./middleware/autenticacion')
 //middleware para parsear datos del body
 app.use(express.json()) //--> en formato de JSON
 app.use(express.urlencoded({extended: true})) //--> en formato de Formulario
@@ -29,6 +33,7 @@ const rutaArchivo = ruta.join(__dirname, "datos.json");
 
 //Libreria para subir archivos
 const multer = require("multer");
+const { JsonWebTokenError } = require('jsonwebtoken');
 
 //Configurar almacenamiento archivos
 
@@ -120,8 +125,36 @@ app.get("/error", (req, res, next)=>{
 
 
 //Ruta protegida
-app.get("/api/rutaprotegida", (req, res)=>{
+app.get("/api/rutaprotegida", autenticacion,(req, res)=>{
     res.status(200).json({mensaje:"Esta es mi ruta protegida !!!"})
+})
+
+//Login
+app.post("/api/login", (req, res)=>{
+    //Simular datos de la base de datos
+    const usuarioBD = {
+        "usuario" : "esteban",
+        "clave" : "abc123"
+    }
+
+    const {usuario, clave} = req.body
+
+    //validar datos
+    if(usuario !== usuarioBD.usuario || clave !== usuarioBD.clave){
+        res.status(400).json({
+            mensaje: "Credenciales invalidas, usuario o clave incorrectas"
+        })
+    }
+
+    const token = jwt.sign(
+        //datos del usuario
+        {"usuario": req.usuario},
+        //generar el token
+        process.env.JWT_SECRET,
+        {expiresIn: "1h"}
+    )
+    res.json({token})
+
 })
 
 //Mensaje de error

@@ -2,10 +2,23 @@ const express = require('express');
 const app = express();
 require('dotenv').config() //Forma de exportar antigua CommonJS
 const port = process.env.PUERTO || 3000;
+const registro = require('./middleware/registroMiddleware')
 
 //middleware para parsear datos del body
 app.use(express.json()) //--> en formato de JSON
 app.use(express.urlencoded({extended: true})) //--> en formato de Formulario
+
+//Middleware propios
+//Este middleware se ejecuta siempre que se haga una peticion (GET, POST, PUT-PATCH, DELETE)
+app.use((req, res, next)=>{
+    console.log(`Tiene milisegundos: ${Date.now()}`);
+    console.log(`Fecha: ${new Date().toISOString()}`);
+    next()    
+});
+
+//Historial de acciones con los method
+app.use(registro)
+
 
 //Leer archivo
 const sistemaArchivo = require("fs");
@@ -58,7 +71,9 @@ app.get("/api/aprendices/:id", (req, res) => {
 //endpoint para crear aprendices
 
 app.post('/api/aprendices',cargar.single("imagen"),(req, res) =>{
-    
+    //Validar que se envien datos
+
+
     const datosAprendiz = req.body 
 
     //AGREGAR LA RUTA DE LA IMAGEN
@@ -96,27 +111,6 @@ app.delete("/api/aprendices/:id", (req, res) => {
         "mensaje": "Eliminar aprendiz"
     });
 });
-
-
-app.post("/rutaJson", (req, res)=>{
-    const todosDatos =req.body
-    const edad =req.body.Edad
-    if (edad >= 18) {
-        res.json({"mensaje":"Es mayor de edad"})
-    }else {
-        res.json({"mensaje":"Es menor"})
-    }
-    res.json({datosJson: todosDatos});
-});
-
-app.post("/rutaFormularios", (req, res)=>{
-    const todosDatos =req.body
-    const programa = req.body.programa
-    
-    res.json({Todosdatos: todosDatos, Mi_Programa: programa})
-});
-
-
 
 
 app.listen(port, () => {

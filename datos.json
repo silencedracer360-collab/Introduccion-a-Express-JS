@@ -26,5 +26,26 @@
     "correo": "esteban@gmail.com",
     "clave": "123456789",
     "imagen": "/misImagenes/1789089599941.jpeg"
+  },
+  {
+    "imagen": "sin imagen"
+  },
+  {
+    "nombre": "esteban",
+    "edad": 33,
+    "correo": "example@gmail.com",
+    "imagen": "sin imagen"
+  },
+  {
+    "nombre": "esteban",
+    "edad": 33,
+    "correo": "example@gmail.com",
+    "imagen": "sin imagen"
+  },
+  {
+    "nombre": "esteban",
+    "edad": 33,
+    "correo": "example@gmail.com",
+    "imagen": "sin imagen"
   }
 ]

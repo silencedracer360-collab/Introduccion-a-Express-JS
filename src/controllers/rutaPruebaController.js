@@ -1,4 +1,5 @@
-const mostrarRuta = (req, res)=>{
+//funciones asincronas
+const mostrarRuta = async (req, res)=>{
     res.json({
         Mensaje: "Es mi ruta de prueba y ruta personal con controlador"
     });

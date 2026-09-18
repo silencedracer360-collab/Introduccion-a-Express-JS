@@ -5,9 +5,9 @@ const port = process.env.PUERTO || 3000;
 const jwt = require('jsonwebtoken')
 
 //importacion de middlewares propios
-const registro = require('./middleware/registroMiddleware')
-const mensajeError = require('./middleware/manejadorErrores')
-const autenticacion = require('./middleware/autenticacion')
+const registro = require('./src/middleware/registroMiddleware')
+const mensajeError = require('./src/middleware/manejadorErrores')
+const autenticacion = require('./src/middleware/autenticacion')
 //middleware para parsear datos del body
 app.use(express.json()) //--> en formato de JSON
 app.use(express.urlencoded({extended: true})) //--> en formato de Formulario

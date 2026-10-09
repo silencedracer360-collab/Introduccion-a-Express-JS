@@ -4,7 +4,7 @@ const app = express()
 //Importar Enrutador
 const enrutador = require('./routers')
 require('dotenv').config()
-
+ 
 //Usar los middleware
 app.use(express.json()) //--> en formato de JSON
 app.use(express.urlencoded({extended: true})) //--> en formato de Formulario

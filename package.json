@@ -5,6 +5,7 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.3.0",
+    "package.json": "^2.0.1",
     "yarn": "^1.22.22"
   },
   "name": "intro-expressjs-castrillon-esteban",
@@ -18,5 +19,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "prisma": "^7.10.0",
+    "tsx": "^4.23.15"
+  }
 }

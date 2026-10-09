@@ -102,3 +102,153 @@ Ejemplo de Codigo:
 
 * CommonJS: Viene activo por defecto en cualquier archivo .js.
 * ES Modules: Debes agregar '"type": "module"' en tu package.json, o cambiar la extension de tus archivos a .mjs.
+
+
+Restarting 'src/server.js'
+◇ injected env (3) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+MI SERVIDOR: http://localhost:3030
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npm install @prisma/client@7 @prisma/adapter-pg@7 tsx
+
+added 26 packages, and audited 209 packages in 13s
+
+34 packages are looking for funding
+  run `npm fund` for details
+
+13 vulnerabilities (4 moderate, 3 high, 6 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npm install @prisma/client@7 @prisma/adapter-pg@7 tsx --save-dev
+npm warn idealTree Removing dependencies.@prisma/client in favor of devDependencies.@prisma/client
+npm warn idealTree Removing dependencies.@prisma/adapter-pg in favor of devDependencies.@prisma/adapter-pg
+npm warn idealTree Removing dependencies.tsx in favor of devDependencies.tsx
+
+up to date, audited 209 packages in 1s
+
+34 packages are looking for funding
+  run `npm fund` for details
+
+13 vulnerabilities (4 moderate, 3 high, 6 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npx prisma init --datasource-provider postgresql
+Need to install the following packages:
+prisma@8.0.0-rc.22
+Ok to proceed? (y) n
+npm error canceled
+npm error A complete log of this run can be found in: C:\Users\sena\AppData\Local\npm-cache\_logs\2026-10-09T15_54_16_114Z-debug-0.log
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npm install @prisma/client7
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/@prisma%2fclient7 - Not found
+npm error 404
+npm error 404  The requested resource '@prisma/client7@*' could not be found or you do not have permission to access it.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: C:\Users\sena\AppData\Local\npm-cache\_logs\2026-10-09T15_56_07_394Z-debug-0.log
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npm install @prisma/client@7
+
+up to date, audited 209 packages in 2s
+
+34 packages are looking for funding
+  run `npm fund` for details
+
+13 vulnerabilities (4 moderate, 3 high, 6 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npm install -D  @prisma/client@7
+
+up to date, audited 209 packages in 10s
+
+34 packages are looking for funding
+  run `npm fund` for details
+
+13 vulnerabilities (4 moderate, 3 high, 6 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> ^C
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npm install -D prisma@7         
+
+added 132 packages, and audited 341 packages in 14s
+
+47 packages are looking for funding
+  run `npm fund` for details
+
+17 vulnerabilities (4 moderate, 7 high, 6 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npx prisma init --datasource-provider postgresql                
+✔ Skills installed
+
+Initialized Prisma in your project
+
+  prisma/
+    schema.prisma
+  prisma7.config.ts
+  .claude/skills/
+  .windsurf/skills/
+  .agents/skills/
+  skills-lock.json
+
+warn You already have a .gitignore file. Don't forget to add .env in it to not commit any private information.
+
+Next, choose how you want to set up your database:
+
+CONNECT EXISTING DATABASE:
+  1. Configure your DATABASE_URL in prisma7.config.ts
+  2. Run prisma db pull to introspect your database.
+
+CREATE NEW DATABASE:
+  Local: npx prisma dev (runs Postgres locally in your terminal)
+  Cloud: npx create-db (creates a free Prisma Postgres database)
+
+Then, define your models in prisma/schema.prisma and run prisma migrate dev to apply your schema.
+
+Learn more: https://pris.ly/getting-started
+ 
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> npx prisma migrate dev --name inicio 
+Loaded Prisma config from prisma7.config.ts.
+
+Prisma schema loaded from prisma\schema.prisma.
+Datasource "db": PostgreSQL database "bd3407186", schema "public" at "localhost:5432"
+
+Applying migration `20261009162928_inicio`
+
+The following migration(s) have been created and applied from new schema changes:
+
+prisma\migrations/
+  └─ 20261009162928_inicio/
+    └─ migration.sql
+
+Your database is now in sync with your schema.
+
+PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> 

@@ -252,3 +252,39 @@ prisma\migrations/
 Your database is now in sync with your schema.
 
 PS C:\Esteban_Castrillon\Introduccion-a-Express-JS> 
+
+--INSTALACION DE PRISMA Y DEMAS DEPENDCENCIAS NECESARIAS--
+
+INSTALACION DE PRISMA 7
+npm install -D  prisma@7 --save -dev
+
+INSTALACION DEL CLIENTE PRISMA  
+npm install -D  @prisma/client@7 --save -dev
+
+INSTALACION DEL ADAPTADOR
+npm install -D  @prisma/adapter-pg@7 --save -dev
+
+INSTALACION LIBRERIA PARA ARCHIVOS EXTENSION ts tsx
+npm install -D  prisma@7 tsx
+
+NOTA "--save -dev" ES IGUAL A "-D"
+
+--DESPUES DE INSTALAR LAS DEPENDENCIAS INICIAR PRISMA--
+
+INICIAR PRISMA
+npx prisma init --datasource-provider postgresql
+esto creara la carpeta prisma con  el schema y el archivo de configuracion.
+
+EDITAR EL ARCHIVO .env DE VARIABLES DE ENTORNO, LA URL DE Postgres
+DATABASE_URL="postgresql://postgres:admin@localhost:5432/bd3407186?schema=public"
+
+
+AHORA CREAR LAS TABLAS Y EL CLIENTE
+npx prisma migrate dev --name inicio
+
+CLIENTE
+npx prisma generate
+
+Jerarquia de carpetas
+
+route -> Controller -> Service -> models (Prisma)

@@ -11,10 +11,10 @@ const mostrarUsuarios = async (req, res)=>{
 //Ruta registrarse
 const registrarController = async (req, res) => {
     try {
-        const dataUser = req.body;
+        const {email, name, clave} = req.body;
         
         // Guardamos el usuario creado que retorna el servicio
-        const nuevoUsuario = await registrarUsuario(dataUser);
+        const nuevoUsuario = await registrarUsuario(email, name, clave);
         
         // Le respondemos al cliente con el usuario creado y un estado 201 (Creado)
         res.status(201).json(nuevoUsuario);

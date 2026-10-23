@@ -1,12 +1,14 @@
 const ormPrisma = require("../config/conexion")
+const incriptacion = require("bcryptjs")
 
 const listarUsuarios = async ()=>{
     const usuarios = await ormPrisma.usuarios.findMany();
     return usuarios
 }
 
-const registrarUsuario = async (dataUser)=>{
-    const create = await ormPrisma.usuarios.create({data: dataUser});
+const registrarUsuario = async (email, name, clave)=>{
+    const claveHashed = await incriptacion.hash(clave, 10)
+    const create = await ormPrisma.usuarios.create({data: {email, name, clave: claveHashed}});
     return create
 }
 
